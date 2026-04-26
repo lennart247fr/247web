@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page Not Found | 24-7-quality-time"
+  description="The page you are looking for could not be found."
+>
+  <section class="min-h-[70vh] flex items-center justify-center bg-background" aria-labelledby="error-heading">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h1 id="error-heading" class="text-6xl sm:text-8xl font-bold text-primary mb-4">
+        404
+      </h1>
+      <p class="text-xl text-text/70 mb-8">
+        This page could not be found.
+      </p>
+      <p class="text-text/50 mb-10 max-w-md mx-auto">
+        The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+      </p>
+      <a
+        href="/"
+        class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-primary rounded-lg hover:bg-primary/90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      >
+        Return to Homepage
+      </a>
+    </div>
+  </section>
+</Layout>

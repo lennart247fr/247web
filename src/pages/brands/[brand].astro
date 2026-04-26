@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const brands = await getCollection('brands');
+  return brands
+    .filter((brand) => !brand.data.draft)
+    .map((brand) => ({
+      params: { brand: brand.data.slug },
+      props: { brand: brand.data },
+    }));
+}
+
+const { brand } = Astro.props;
+
+const brandImageMap: Record<string, string> = {
+  squale: '/squale.jpg',
+  marathon: '/marathon.webp',
+  subdelta: '/subdelta.webp',
+  zrc: '/zrc.jpg',
+  bausele: '/bausele.jpg',
+};
+
+const brandImage = brandImageMap[brand.slug];
+---
+
+<Layout
+  title={`${brand.name} | 24-7-quality-time Brand Portfolio`}
+  description={brand.description}
+>
+  <!-- Brand Hero -->
+  <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center bg-primary overflow-hidden" aria-labelledby="brand-heading">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary to-[#0a1f38]" aria-hidden="true"></div>
+    <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" aria-hidden="true"></div>
+    
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h1 id="brand-heading" class="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-4">
+        {brand.name}
+      </h1>
+      <p class="text-xl text-white/80 font-light max-w-2xl mx-auto">
+        {brand.tagline}
+      </p>
+    </div>
+  </section>
+
+  <!-- Brand Story / DNA with Image -->
+  <section class="py-24 bg-background" aria-labelledby="story-heading">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: Text -->
+        <div>
+          <h2 id="story-heading" class="text-3xl sm:text-4xl font-bold text-primary mb-6">
+            The {brand.name} Story
+          </h2>
+          <div class="text-text/80 leading-relaxed space-y-4">
+            <p class="text-xl text-primary/80 font-medium">{brand.description}</p>
+            <p>{brand.story}</p>
+          </div>
+        </div>
+        
+        <!-- Right: Image -->
+        <div class="relative">
+          {brandImage ? (
+            <img
+              src={brandImage}
+              alt={`${brand.name} timepiece`}
+              class="w-full rounded-2xl shadow-xl object-cover aspect-[4/3]"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <div class="aspect-[4/3] bg-secondary/10 rounded-2xl flex items-center justify-center">
+              <span class="text-secondary text-sm font-medium">Image placeholder: {brand.name}</span>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand CTA -->
+  <section class="py-24 bg-primary" aria-labelledby="cta-heading">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 id="cta-heading" class="text-3xl sm:text-4xl font-bold text-white mb-6">
+        Interested in offering {brand.name} to your customers?
+      </h2>
+      <p class="text-white/70 text-lg mb-10 max-w-2xl mx-auto">
+        We would be delighted to discuss distribution opportunities and how we can support your business with this exceptional brand.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-primary bg-white rounded-lg hover:bg-white/90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+      >
+        Inquire Now
+      </a>
+    </div>
+  </section>
+</Layout>

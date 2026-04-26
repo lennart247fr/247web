@@ -1,0 +1,119 @@
+---
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const legalLinks = [
+  { label: 'Impressum', href: '/impressum' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+];
+
+const brandLinks = [
+  { label: 'Squale', href: '/brands/squale' },
+  { label: 'Marathon', href: '/brands/marathon' },
+  { label: 'Subdelta', href: '/brands/subdelta' },
+  { label: 'ZRC', href: '/brands/zrc' },
+  { label: 'Bausele', href: '/brands/bausele' },
+];
+---
+
+<footer class="bg-primary text-white" role="contentinfo">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <!-- Column 1: Logo & Tagline -->
+      <div>
+        <a href="/" class="inline-flex items-center gap-3 mb-6" aria-label="24-7-quality-time Home">
+          <img
+            src="/logo.jpg"
+            alt="24-7-quality-time Logo"
+            class="h-14 w-14 rounded-full object-cover bg-white shadow-md"
+            width="56"
+            height="56"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <p class="text-white/70 text-sm leading-relaxed max-w-xs">
+          Precision in Time. Excellence in Movement. Your trusted partner for luxury watch distribution across Europe.
+        </p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white/50 mb-4">Quick Links</h3>
+        <ul class="space-y-3">
+          {quickLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-white/80 hover:text-white transition-colors text-sm">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white/50 mt-6 mb-4">Brands</h3>
+        <ul class="space-y-3">
+          {brandLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-white/80 hover:text-white transition-colors text-sm">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact Info -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white/50 mb-4">Contact</h3>
+        <address class="not-italic space-y-3 text-sm text-white/80">
+          <p>
+            <span class="block text-white/50 text-xs uppercase tracking-wider mb-0.5">Owner</span>
+            Lennart Buiks
+          </p>
+          <p>
+            <span class="block text-white/50 text-xs uppercase tracking-wider mb-0.5">Address</span>
+            Rosmarinstrasse 10<br />
+            48488 Emsbüren, Germany
+          </p>
+          <p>
+            <span class="block text-white/50 text-xs uppercase tracking-wider mb-0.5">Email</span>
+            <a href="mailto:info@tmpcs.eu" class="hover:text-white transition-colors">info@tmpcs.eu</a>
+          </p>
+          <p>
+            <span class="block text-white/50 text-xs uppercase tracking-wider mb-0.5">Phone</span>
+            <a href="tel:+4959039359398" class="hover:text-white transition-colors">+49 5903 9359398</a>
+          </p>
+          <p>
+            <span class="block text-white/50 text-xs uppercase tracking-wider mb-0.5">VAT ID</span>
+            DE260830187
+          </p>
+        </address>
+      </div>
+
+      <!-- Column 4: Legal -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-white/50 mb-4">Legal</h3>
+        <ul class="space-y-3">
+          {legalLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-white/80 hover:text-white transition-colors text-sm">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-white/50 text-sm">
+        © {new Date().getFullYear()} 24-7-quality-time / TMPCS.EU. All rights reserved.
+      </p>
+      <p class="text-white/50 text-sm">
+        Operated under TMPCS.EU
+      </p>
+    </div>
+  </div>
+</footer>

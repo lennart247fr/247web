@@ -1,0 +1,90 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { 
+  title, 
+  description = "24-7-quality-time / TMPCS.EU - Precision in Time. Excellence in Movement. Luxury watch import, European wholesale distribution, logistics, and fulfillment.",
+  ogImage = "/og-image.svg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://tmpcs.eu');
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="generator" content={Astro.generator} />
+  
+  <!-- Canonical -->
+  <link rel="canonical" href={canonicalURL} />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={ogImage} />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <title>{title}</title>
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "24-7-quality-time / TMPCS.EU",
+    "url": "https://tmpcs.eu",
+    "logo": "https://tmpcs.eu/logo.jpg",
+    "founder": {
+      "@type": "Person",
+      "name": "Lennart Buiks"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rosmarinstrasse 10",
+      "addressLocality": "Emsbüren",
+      "postalCode": "48488",
+      "addressCountry": "DE"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+4959039359398",
+      "contactType": "customer service",
+      "email": "info@tmpcs.eu"
+    },
+    "vatID": "DE260830187"
+  })} />
+</head>
+<body class="min-h-screen flex flex-col">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:font-medium">
+    Skip to main content
+  </a>
+  <Header />
+  <main id="main-content" class="flex-1">
+    <slot />
+  </main>
+  <Footer />
+  <CookieBanner />
+</body>
+</html>
