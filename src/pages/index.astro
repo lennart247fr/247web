@@ -5,7 +5,6 @@ const brandImageMap: Record<string, string> = {
   squale: '/squale.jpg',
   marathon: '/marathon.webp',
   subdelta: '/subdelta.webp',
-  zrc: '/zrc.jpg',
   bausele: '/bausele.jpg',
 };
 
@@ -13,12 +12,19 @@ const brands = [
   { slug: 'squale', name: 'Squale', description: 'Swiss Made Professional Dive Watches of the highest quality, trusted by military professionals and athletes.' },
   { slug: 'marathon', name: 'Marathon', description: 'Allied forces timing instruments since 1941. Swiss engineering meets military-grade durability.' },
   { slug: 'subdelta', name: 'Subdelta', description: 'Authentic instrument watches built with uncompromising durability and refined aesthetics.' },
-  { slug: 'zrc', name: 'ZRC', description: "Geneva's pioneering dive watch brand since 1904. Heritage meets technical excellence." },
   { slug: 'bausele', name: 'Bausele', description: 'Swiss-made watches with Australian soul. Founded 2011, featuring unique elements in every crown.' },
+];
+
+const newsItems = [
+  {
+    date: '2026-04-29',
+    title: 'TMPCS.EU – New Name, Same Excellence',
+    excerpt: 'We are excited to announce our rebranding to TMPCS.EU. While our name has changed, our commitment to precision, excellence, and European luxury watch distribution remains stronger than ever.',
+  },
 ];
 ---
 
-<Layout title="24-7-quality-time | Precision in Time. Excellence in Movement.">
+<Layout title="TMPCS.EU | Precision in Time. Excellence in Movement.">
   <!-- Hero Section -->
   <section 
     class="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -64,8 +70,8 @@ const brands = [
         <!-- Left: Image -->
         <div class="relative">
           <img
-            src="/aboutus.jpg"
-            alt="24-7-quality-time headquarters and showroom"
+            src="/uberunsneu.jpg"
+            alt="TMPCS.EU headquarters and showroom"
             class="w-full rounded-2xl shadow-xl object-cover aspect-[4/3]"
             loading="lazy"
             decoding="async"
@@ -75,11 +81,11 @@ const brands = [
         <!-- Right: Text -->
         <div>
           <h2 id="about-heading" class="text-3xl sm:text-4xl font-bold text-primary mb-6">
-            About 24-7-quality-time
+            About TMPCS.EU
           </h2>
           <div class="space-y-4 text-text/80 leading-relaxed">
             <p>
-              Headquartered in Emsbüren, Germany, 24-7-quality-time operates under TMPCS.EU as a premier partner for luxury instrument watch brands seeking to establish and expand their presence across Europe.
+              Headquartered in Emsbüren, Germany, TMPCS.EU is a premier partner for luxury instrument watch brands seeking to establish and expand their presence across Europe.
             </p>
             <p>
               We specialize in the import, wholesale distribution, logistics, and fulfillment of exceptional Swiss and German timepieces. Our curated portfolio represents the pinnacle of precision engineering and horological heritage.
@@ -105,7 +111,7 @@ const brands = [
         </p>
       </div>
       
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {brands.map((brand) => (
           <a 
             href={`/brands/${brand.slug}`} 
@@ -126,19 +132,6 @@ const brands = [
             </div>
           </a>
         ))}
-        
-        <!-- Sicura - Hidden/Draft -->
-        <!-- 
-        <a href="/brands/sicura" class="group relative bg-background border border-secondary/20 rounded-xl overflow-hidden hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
-          <div class="aspect-[16/10] w-full overflow-hidden bg-secondary/10 flex items-center justify-center">
-            <span class="text-secondary text-sm font-medium">Image placeholder: Sicura</span>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-semibold text-primary mb-2">Sicura</h3>
-            <p class="text-text/70 text-sm leading-relaxed">A legendary name in watchmaking, preparing for its European return.</p>
-          </div>
-        </a>
-        -->
       </div>
     </div>
   </section>
@@ -209,6 +202,41 @@ const brands = [
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News Section -->
+  <section class="py-24 bg-background" aria-labelledby="news-heading">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 id="news-heading" class="text-3xl sm:text-4xl font-bold text-primary mb-4">
+          Latest News
+        </h2>
+        <p class="text-text/60 max-w-2xl mx-auto text-lg">
+          Stay up to date with the latest announcements from TMPCS.EU.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {newsItems.slice(0, 3).map((item) => (
+          <article class="bg-white border border-secondary/20 rounded-xl p-6 hover:shadow-lg transition-shadow">
+            <time class="text-sm text-secondary font-medium" datetime={item.date}>
+              {new Date(item.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+            </time>
+            <h3 class="text-xl font-semibold text-primary mt-2 mb-3">{item.title}</h3>
+            <p class="text-text/70 text-sm leading-relaxed">{item.excerpt}</p>
+          </article>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12">
+        <a
+          href="/news"
+          class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-primary bg-white border border-primary/20 rounded-lg hover:bg-primary hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
+          View All News
+        </a>
       </div>
     </div>
   </section>

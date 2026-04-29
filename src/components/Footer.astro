@@ -2,6 +2,7 @@
 const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/#services' },
+  { label: 'News', href: '/news' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -14,7 +15,6 @@ const brandLinks = [
   { label: 'Squale', href: '/brands/squale' },
   { label: 'Marathon', href: '/brands/marathon' },
   { label: 'Subdelta', href: '/brands/subdelta' },
-  { label: 'ZRC', href: '/brands/zrc' },
   { label: 'Bausele', href: '/brands/bausele' },
 ];
 ---
@@ -24,13 +24,11 @@ const brandLinks = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
       <!-- Column 1: Logo & Tagline -->
       <div>
-        <a href="/" class="inline-flex items-center gap-3 mb-6" aria-label="24-7-quality-time Home">
+        <a href="/" class="inline-flex items-center gap-3 mb-6" aria-label="TMPCS.EU Home">
           <img
-            src="/logo.jpg"
-            alt="24-7-quality-time Logo"
-            class="h-14 w-14 rounded-full object-cover bg-white shadow-md"
-            width="56"
-            height="56"
+            src="/newlogo.jpg"
+            alt="TMPCS.EU Logo"
+            class="h-14 w-auto object-contain"
             loading="lazy"
             decoding="async"
           />
@@ -109,10 +107,10 @@ const brandLinks = [
 
     <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-white/50 text-sm">
-        © {new Date().getFullYear()} 24-7-quality-time / TMPCS.EU. All rights reserved.
+        © {new Date().getFullYear()} TMPCS.EU. All rights reserved.
       </p>
       <p class="text-white/50 text-sm">
-        Operated under TMPCS.EU
+        Precision in Time. Excellence in Movement.
       </p>
     </div>
   </div>
